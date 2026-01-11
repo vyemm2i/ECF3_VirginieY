@@ -29,7 +29,7 @@ name: Cypress E2E Tests
 on:
   push:
     branches:
-      - master
+      - main
       - develop
   pull_request:
 
