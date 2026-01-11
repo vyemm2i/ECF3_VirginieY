@@ -1,0 +1,82 @@
+# Marketplace GITHUB : Pour les actions
+# https://github.com/marketplace?query=cypress&type=actions
+
+# Documentation GITHUB : Pour expression, variable, cache etc...
+# https://docs.github.com/fr/actions/reference/workflows-and-actions/expressions
+
+# env: Variables d’environnement (utilisable partout)
+# needs: ne se lance que si le job dedans a réussi
+# uses: sert à appeler une action existante, publiée sur GitHub Marketplace.
+
+  # with: fournit des paramètres à une action (Quand on utilise "uses:"", certaines actions ont besoin de configurations)
+
+    # if: condition d'exécution
+    # run: sert à exécuter une commande Linux
+    # build: compile
+    # start: démarre l'application
+    # wait-on: attendre que ton app soit prête
+    # command: commande de lancement des tests Cypress
+
+
+
+name: Cypress E2E Tests
+
+# Lance les tests automatiquement "on: push" :
+#à chaque push
+#à chaque pull request
+
+# Déclencheurs du workflow : A chaque push et pull
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+
+
+
+
+jobs:
+
+# ===========================================
+# JOB 1 : Tests
+# ===========================================
+
+# runs-on: ubuntu-latest => GitHub utilise une machine Linux vierge
+
+  test-cypress:
+    # S’exécute sur une machine Linux
+    runs-on: ubuntu-latest
+
+    steps:
+      # Récupération du code : Télécharge mon code sur la machine CI (checkout)
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Installation de Node.js : Installe Node.js (obligatoire pour Cypress)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # Installation des dépendances : Installe Cypress + dépendances recommandée en CI
+      - name: Install dependencies
+        run: npm install
+
+      # Lancement des tests Cypress : Lance Cypress en mode headless (normal en CI)
+      - name: Exécution des tests avec Cypress
+        run: npx cypress run
+
+      # Telecharger des rapports / artefacts et Sauvegarde :
+      # - screenshots
+      # - vidéos Cypress
+      # Ces fichiers sont visibles dans GitHub / Actions / Artifacts
+
+      - name: Upload Cypress results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-results
+          path: |
+            cypress/screenshots
+            cypress/videos

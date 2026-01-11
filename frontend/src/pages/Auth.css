@@ -1,0 +1,243 @@
+/* Auth Pages Styles */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 440px;
+}
+
+.auth-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  padding: var(--spacing-xl);
+}
+
+.auth-card-wide {
+  max-width: 520px;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.auth-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-500);
+  text-decoration: none;
+  margin-bottom: var(--spacing-lg);
+}
+
+.auth-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: var(--spacing-xs);
+}
+
+.auth-header p {
+  color: var(--gray-500);
+}
+
+.auth-form {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 480px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.form-link {
+  font-size: 0.875rem;
+  color: var(--primary-500);
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-400);
+  pointer-events: none;
+}
+
+.input-icon-right {
+  position: absolute;
+  right: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--success);
+}
+
+.input-with-icon .form-input {
+  padding-left: 48px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--gray-400);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+}
+
+.password-toggle:hover {
+  color: var(--gray-600);
+}
+
+/* Password Strength Meter */
+.password-strength {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.strength-bars {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.strength-bar {
+  height: 4px;
+  flex: 1;
+  background: var(--gray-200);
+  border-radius: 2px;
+  transition: background var(--transition-fast);
+}
+
+.strength-bar.strength-1 {
+  background: var(--error);
+}
+
+.strength-bar.strength-2 {
+  background: var(--warning);
+}
+
+.strength-bar.strength-3 {
+  background: #84cc16;
+}
+
+.strength-bar.strength-4 {
+  background: var(--success);
+}
+
+.strength-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.strength-label.strength-1 {
+  color: var(--error);
+}
+
+.strength-label.strength-2 {
+  color: var(--warning);
+}
+
+.strength-label.strength-3 {
+  color: #84cc16;
+}
+
+.strength-label.strength-4 {
+  color: var(--success);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.loader-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 2px;
+}
+
+.auth-footer {
+  text-align: center;
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--gray-200);
+}
+
+.auth-footer p {
+  color: var(--gray-600);
+}
+
+.auth-footer a {
+  font-weight: 500;
+}
+
+/* Test Accounts Box */
+.test-accounts {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--gray-50);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--gray-300);
+}
+
+.test-accounts-title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--gray-700);
+  margin-bottom: var(--spacing-sm);
+}
+
+.test-accounts ul {
+  list-style: none;
+  font-size: 0.8125rem;
+  color: var(--gray-600);
+}
+
+.test-accounts li {
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Alert adjustments */
+.auth-page .alert {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.text-success {
+  color: var(--success);
+}
