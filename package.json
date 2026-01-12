@@ -1,4 +1,10 @@
 {
+  "name": "medibook",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start"
+  },
   "devDependencies": {
     "cypress": "^15.8.2"
   }
