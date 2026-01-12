@@ -61,11 +61,22 @@ jobs:
 
       # Installation des dépendances : Installe Cypress + dépendances recommandée en CI
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # 4Démarrer l'application
-      - name: Start app
+      # Installer Cypress
+      - name: Install Cypress
+        run: npx cypress install
+
+      # Démarrer l'application en arrière-plan
+      - name: Start application
         run: npm start &
+
+      # Attendre que l'application soit prête sur localhost:3000
+      - name: Wait for app
+        uses: jakejarvis/wait-action@v0.1.8
+        with:
+          timeout: '60'           # attend jusqu'à 60 secondes
+          check: 'http://localhost:3000'
 
       # Lancement des tests Cypress : Lance Cypress en mode headless (normal en CI)
       - name: Exécution des tests avec Cypress
