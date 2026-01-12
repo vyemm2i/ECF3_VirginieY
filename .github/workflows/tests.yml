@@ -63,24 +63,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Installer Cypress
-      - name: Install Cypress
-        run: npx cypress install
-
-      # Démarrer l'application en arrière-plan
-      - name: Start application
-        run: npm start &
-
-      # Attendre que l'application soit prête sur localhost:3000
-      - name: Wait for app
-        uses: jakejarvis/wait-action@v0.1.8
+      # Lancer Cypress via l'action officielle
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
         with:
-          timeout: '60'           # attend jusqu'à 60 secondes
-          check: 'http://localhost:3000'
-
-      # Lancement des tests Cypress : Lance Cypress en mode headless (normal en CI)
-      - name: Exécution des tests avec Cypress
-        run: npx cypress run
+          start: npm start           # Démarre l'app
+          wait-on: 'http://localhost:3000' # Attend que le serveur soit prêt
+          wait-on-timeout: 120      # Timeout si le serveur ne répond pas
 
       # Telecharger des rapports / artefacts et Sauvegarde :
       # - screenshots
