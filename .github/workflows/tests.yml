@@ -57,11 +57,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 18.18.1
 
       # Installation des dépendances : Installe Cypress + dépendances recommandée en CI
       - name: Install dependencies
         run: npm install
+
+      # 4Démarrer l'application
+      - name: Start app
+        run: npm start &
 
       # Lancement des tests Cypress : Lance Cypress en mode headless (normal en CI)
       - name: Exécution des tests avec Cypress
